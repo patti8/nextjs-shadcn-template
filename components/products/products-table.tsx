@@ -110,15 +110,15 @@ export function ProductsTable() {
           </SelectContent>
         </Select>
       </div>
-      <div className="rounded-md border">
+      <div className="overflow-x-auto rounded-md border">
         <Table>
           <TableHeader>
             <TableRow>
               <TableHead>Name</TableHead>
-              <TableHead>Category</TableHead>
+              <TableHead className="hidden md:table-cell">Category</TableHead>
               <TableHead>Price</TableHead>
-              <TableHead>Stock</TableHead>
-              <TableHead>Status</TableHead>
+              <TableHead className="hidden sm:table-cell">Stock</TableHead>
+              <TableHead className="hidden sm:table-cell">Status</TableHead>
               <TableHead className="text-right">Actions</TableHead>
             </TableRow>
           </TableHeader>
@@ -132,11 +132,14 @@ export function ProductsTable() {
             ) : (
               filteredProducts.map((product) => (
                 <TableRow key={product.id}>
-                  <TableCell className="font-medium">{product.name}</TableCell>
-                  <TableCell>{product.category}</TableCell>
+                  <TableCell className="font-medium">
+                    <div>{product.name}</div>
+                    <div className="md:hidden text-sm text-muted-foreground">{product.category}</div>
+                  </TableCell>
+                  <TableCell className="hidden md:table-cell">{product.category}</TableCell>
                   <TableCell>${product.price.toFixed(2)}</TableCell>
-                  <TableCell>{product.stock}</TableCell>
-                  <TableCell>
+                  <TableCell className="hidden sm:table-cell">{product.stock}</TableCell>
+                  <TableCell className="hidden sm:table-cell">
                     <Badge
                       variant={
                         product.status === "In Stock"

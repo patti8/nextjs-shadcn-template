@@ -5,7 +5,7 @@ import Link from "next/link"
 export default function LoginPage() {
   return (
     <div className="flex items-center justify-center min-h-screen p-4">
-      <Card className="w-full max-w-md">
+      <Card className="w-full max-w-md mx-auto">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl font-bold">Login</CardTitle>
           <CardDescription>Enter your credentials to access your account</CardDescription>

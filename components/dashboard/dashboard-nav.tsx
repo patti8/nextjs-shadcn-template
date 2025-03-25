@@ -29,7 +29,7 @@ const navItems = [
   },
 ]
 
-export function DashboardNav() {
+export function DashboardNav({ onItemClick }: { onItemClick?: () => void }) {
   const pathname = usePathname()
 
   return (
@@ -40,6 +40,7 @@ export function DashboardNav() {
           variant={pathname === item.href ? "secondary" : "ghost"}
           className={cn("justify-start", pathname === item.href && "bg-secondary")}
           asChild
+          onClick={onItemClick}
         >
           <Link href={item.href}>
             <item.icon className="mr-2 h-4 w-4" />
